@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.mapper.EmpMapper">
+
+    <select id="selectEmp" resultType="com.neuedu.po.Emp">
+        select * from emp where empno = #{empno}
+    </select>
+
+
+    <select id="selectAllEmp" resultType="com.neuedu.po.Emp">
+        select * from emp
+    </select>
+
+</mapper>
