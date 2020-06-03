@@ -12,4 +12,8 @@ public interface EmpMapper {
 
    /* @Select("SELECT * FROM emp")*/
     public List<Emp> selectAllEmp();
+
+    public List<Emp> selectEmpByName(String ename);
+
+    public void insertEmp(Emp e);
 }

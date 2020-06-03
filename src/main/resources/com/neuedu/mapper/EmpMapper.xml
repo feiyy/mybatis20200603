@@ -8,10 +8,17 @@
         select * from emp where empno = #{empno}
     </select>
 
-
     <select id="selectAllEmp" resultType="Emp">
         select * from emp
     </select>
+
+    <select id="selectEmpByName" resultType="Emp">
+        select * from emp where ename = #{ename}
+    </select>
+
+    <insert id="insertEmp">
+        insert into emp values(null,#{ename},#{job},#{mgr},#{hiredate},#{sal},#{comm},#{deptno})
+    </insert>
 
     
 

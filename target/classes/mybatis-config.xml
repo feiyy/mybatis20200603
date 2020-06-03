@@ -23,6 +23,7 @@
     </environments>
     <mappers>
        <!-- <mapper resource="com/neuedu/mapper/EmpMapper.xml"/>-->
-        <mapper class="com.neuedu.mapper.EmpMapper"></mapper>
+        <!--<mapper class="com.neuedu.mapper.EmpMapper"></mapper>-->
+        <package name="com.neuedu.mapper"/>
     </mappers>
 </configuration>
