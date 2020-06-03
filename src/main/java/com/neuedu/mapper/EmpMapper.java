@@ -1,6 +1,7 @@
 package com.neuedu.mapper;
 
 import com.neuedu.po.Emp;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
@@ -16,4 +17,8 @@ public interface EmpMapper {
     public List<Emp> selectEmpByName(String ename);
 
     public void insertEmp(Emp e);
+
+    public void updateEmp(@Param("ename") String ename, @Param("empno")int empno);
+
+    public void deleteEmp(int empno);
 }

@@ -87,6 +87,58 @@ public class TestMybatis2 {
 
             empMapper.insertEmp(e);
 
+            System.out.println(e.getEmpno());
+
+            //commit for insert, update, delete
+            session.commit();
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void test4() {
+        //inputstream
+        try {
+            InputStream in = Resources.getResourceAsStream("mybatis-config.xml");
+
+            //create sqlSessionFactory
+            SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(in);
+
+            //get sqlsession using this factory
+            SqlSession session = factory.openSession();
+
+            EmpMapper empMapper = session.getMapper(EmpMapper.class);
+
+            empMapper.updateEmp("test2",7938);
+
+            //commit for insert, update, delete
+            session.commit();
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void test5() {
+        //inputstream
+        try {
+            InputStream in = Resources.getResourceAsStream("mybatis-config.xml");
+
+            //create sqlSessionFactory
+            SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(in);
+
+            //get sqlsession using this factory
+            SqlSession session = factory.openSession();
+
+            EmpMapper empMapper = session.getMapper(EmpMapper.class);
+
+            empMapper.deleteEmp(7938);
+
             //commit for insert, update, delete
             session.commit();
 

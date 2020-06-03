@@ -18,8 +18,18 @@
 
     <insert id="insertEmp">
         insert into emp values(null,#{ename},#{job},#{mgr},#{hiredate},#{sal},#{comm},#{deptno})
+
+        <selectKey keyProperty="empno" resultType="int" order="AFTER">
+             select last_insert_id()
+        </selectKey>
     </insert>
 
-    
+    <update id="updateEmp">
+         update emp set ename = #{ename} where empno = #{empno}
+    </update>
+
+    <delete id="deleteEmp">
+        delete from emp where empno = #{empno}
+    </delete>
 
 </mapper>
