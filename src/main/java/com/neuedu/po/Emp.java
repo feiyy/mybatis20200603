@@ -2,6 +2,9 @@ package com.neuedu.po;
 
 import java.sql.Date;
 
+/*
+* relation between emp and dept is "many to one"
+* */
 public class Emp {
 
       private int empno;
@@ -12,6 +15,15 @@ public class Emp {
       private double sal;
       private double comm;
       private int deptno;
+      private Dept dept;
+
+    public Dept getDept() {
+        return dept;
+    }
+
+    public void setDept(Dept dept) {
+        this.dept = dept;
+    }
 
     public int getEmpno() {
         return empno;

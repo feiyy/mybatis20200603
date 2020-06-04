@@ -1,5 +1,6 @@
 import com.neuedu.mapper.EmpMapper;
 import com.neuedu.mapper.SalgradeMapper;
+import com.neuedu.po.Emp;
 import com.neuedu.po.Salgrade;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
@@ -36,6 +37,21 @@ public class TestMybatis3 {
 
         list.forEach(map -> {
             System.out.println(map.get("empno")+"\t"+map.get("ename") +"\t" + map.get("deptno") +"\t"+map.get("dname"));
+        });
+
+    }
+
+    @Test
+    public void test3()
+    {
+        SqlSession session =  DBUtil.getSqlSession();
+
+        EmpMapper empMapper = session.getMapper(EmpMapper.class);
+
+        List<Emp> list = empMapper.getEmpWithDept2();
+
+        list.forEach(e -> {
+            System.out.println(e.getEmpno()+"\t"+e.getEname()+"\t"+e.getDept().getDeptno()+"\t"+e.getDept().getDname());
         });
 
     }

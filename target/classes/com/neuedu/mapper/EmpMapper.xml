@@ -46,4 +46,23 @@
         where e.deptno = d.deptno
     </select>
 
+    <select id="getEmpWithDept2" resultMap="_empdept">
+         select *
+        from emp e, dept d
+        where e.deptno = d.deptno
+    </select>
+
+    <resultMap id="_empdept" type="Emp" autoMapping="true">
+      <!--  <id column="empno" property="empno"></id>
+        <result column="ename" property="ename"></result>
+        <result column="job" property="job"></result>
+        <result column="hiredate" property="hiredate"></result>
+        <result column="sal" property="sal"></result>-->
+        <association property="dept" javaType="Dept" autoMapping="true">
+           <!-- <id column="deptno" property="deptno"></id>
+            <result column="dname" property="dname"></result>
+            <result column="loc" property="loc"></result>-->
+        </association>
+    </resultMap>
+
 </mapper>

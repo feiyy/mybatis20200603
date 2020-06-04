@@ -28,4 +28,6 @@ public interface EmpMapper {
     public List<Emp> selectEmpByCondition2(HashMap map);
 
     public List<HashMap<String,Object>> getEmpWithDept();
+
+    public List<Emp> getEmpWithDept2();
 }
