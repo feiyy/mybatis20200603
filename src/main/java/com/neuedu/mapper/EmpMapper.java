@@ -26,4 +26,6 @@ public interface EmpMapper {
     public List<Emp> selectEmpByCondition(@Param("column") String column, @Param("value")Object value);
 
     public List<Emp> selectEmpByCondition2(HashMap map);
+
+    public List<HashMap<String,Object>> getEmpWithDept();
 }
