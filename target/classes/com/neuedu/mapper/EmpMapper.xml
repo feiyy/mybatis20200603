@@ -13,7 +13,7 @@
     </select>
 
     <select id="selectEmpByName" resultType="Emp">
-        select * from emp where ename = #{ename}
+        select * from emp where ename like '%${ename}%'
     </select>
 
     <insert id="insertEmp">
@@ -33,6 +33,10 @@
     </delete>
 
     <select id="selectEmpByCondition" resultType="Emp">
+        select * from emp where ${column} = #{value}
+    </select>
+
+    <select id="selectEmpByCondition2" resultType="Emp">
         select * from emp where ${column} = #{value}
     </select>
 

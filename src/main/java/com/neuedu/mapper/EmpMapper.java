@@ -4,6 +4,7 @@ import com.neuedu.po.Emp;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface EmpMapper {
@@ -23,4 +24,6 @@ public interface EmpMapper {
     public void deleteEmp(int empno);
 
     public List<Emp> selectEmpByCondition(@Param("column") String column, @Param("value")Object value);
+
+    public List<Emp> selectEmpByCondition2(HashMap map);
 }

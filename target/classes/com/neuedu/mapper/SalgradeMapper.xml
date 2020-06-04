@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.mapper.SalgradeMapper">
+
+     <select id="getSalAllSalgrade" resultMap="_salgrade">
+          select *
+          from salgrade
+     </select>
+
+    <resultMap id="_salgrade" type="Salgrade">
+        <id column="grade" property="rank"></id>
+        <result column="losal" property="lowsalary"></result>
+        <result column="hisal" property="highsalary"></result>
+    </resultMap>
+
+</mapper>

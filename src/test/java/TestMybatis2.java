@@ -9,6 +9,7 @@ import org.junit.Test;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Date;
+import java.util.HashMap;
 import java.util.List;
 
 public class TestMybatis2 {
@@ -52,7 +53,7 @@ public class TestMybatis2 {
             EmpMapper empMapper = session.getMapper(EmpMapper.class);
 
             //get one emp
-            List<Emp> list = empMapper.selectEmpByName("SMITH");
+            List<Emp> list = empMapper.selectEmpByName("S");
             list.forEach(emp -> {
                 System.out.println(emp.getEmpno() + "\t" + emp.getEname());
             });
@@ -163,6 +164,37 @@ public class TestMybatis2 {
             EmpMapper empMapper = session.getMapper(EmpMapper.class);
 
             List<Emp> emps = empMapper.selectEmpByCondition("empno",7369);
+
+            for(Emp e :emps)
+            {
+                System.out.println(e.getEmpno()+"\t"+e.getEname());
+            }
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void test7() {
+        //inputstream
+        try {
+            InputStream in = Resources.getResourceAsStream("mybatis-config.xml");
+
+            //create sqlSessionFactory
+            SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(in);
+
+            //get sqlsession using this factory
+            SqlSession session = factory.openSession();
+
+            EmpMapper empMapper = session.getMapper(EmpMapper.class);
+
+            HashMap<String, Object> map = new HashMap<>();
+            map.put("column","empno");
+            map.put("value",7369);
+
+            List<Emp> emps = empMapper.selectEmpByCondition2(map);
 
             for(Emp e :emps)
             {
