@@ -30,4 +30,6 @@ public interface EmpMapper {
     public List<HashMap<String,Object>> getEmpWithDept();
 
     public List<Emp> getEmpWithDept2();
+
+    public List<Emp> getEmpWidthDeptLazy();
 }

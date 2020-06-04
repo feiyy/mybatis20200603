@@ -5,6 +5,12 @@
 <configuration>
 
     <properties resource="config.properties"></properties>
+
+    <!--enable lazy loading-->
+    <settings>
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <setting name="aggressiveLazyLoading" value="false"/>
+    </settings>
     
     <typeAliases>
         <package name="com.neuedu.po"/>

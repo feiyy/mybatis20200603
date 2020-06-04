@@ -53,16 +53,28 @@
     </select>
 
     <resultMap id="_empdept" type="Emp" autoMapping="true">
-      <!--  <id column="empno" property="empno"></id>
-        <result column="ename" property="ename"></result>
-        <result column="job" property="job"></result>
-        <result column="hiredate" property="hiredate"></result>
-        <result column="sal" property="sal"></result>-->
-        <association property="dept" javaType="Dept" autoMapping="true">
-           <!-- <id column="deptno" property="deptno"></id>
-            <result column="dname" property="dname"></result>
-            <result column="loc" property="loc"></result>-->
-        </association>
+    <!--  <id column="empno" property="empno"></id>
+      <result column="ename" property="ename"></result>
+      <result column="job" property="job"></result>
+      <result column="hiredate" property="hiredate"></result>
+      <result column="sal" property="sal"></result>-->
+    <association property="dept" javaType="Dept" autoMapping="true">
+        <!-- <id column="deptno" property="deptno"></id>
+         <result column="dname" property="dname"></result>
+         <result column="loc" property="loc"></result>-->
+    </association>
+</resultMap>
+
+    <select id="getEmpWidthDeptLazy" resultMap="_ed">
+        select * from emp
+    </select>
+
+    <resultMap id="_ed" type="Emp" autoMapping="true">
+        <association property="dept" javaType="Dept" select="getDeptById" column="deptno"></association>
     </resultMap>
+
+    <select id="getDeptById" resultType="Dept">
+        select * from dept where deptno = #{deptno}
+    </select>
 
 </mapper>

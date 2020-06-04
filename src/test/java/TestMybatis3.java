@@ -81,5 +81,25 @@ public class TestMybatis3 {
 
     }
 
+    @Test
+    public void test5()
+    {
+        SqlSession session =  DBUtil.getSqlSession();
+
+        EmpMapper empMapper = session.getMapper(EmpMapper.class);
+
+        List<Emp> list = empMapper.getEmpWidthDeptLazy();
+
+        list.forEach(e -> {
+            System.out.println(e.getEmpno()+"\t"+e.getEname());
+
+            Dept d = e.getDept();
+
+            System.out.println(d.getDname());
+
+        });
+
+    }
+
 
 }
