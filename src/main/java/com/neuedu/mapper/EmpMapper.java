@@ -21,4 +21,6 @@ public interface EmpMapper {
     public void updateEmp(@Param("ename") String ename, @Param("empno")int empno);
 
     public void deleteEmp(int empno);
+
+    public List<Emp> selectEmpByCondition(@Param("column") String column, @Param("value")Object value);
 }

@@ -32,4 +32,8 @@
         delete from emp where empno = #{empno}
     </delete>
 
+    <select id="selectEmpByCondition" resultType="Emp">
+        select * from emp where ${column} = #{value}
+    </select>
+
 </mapper>

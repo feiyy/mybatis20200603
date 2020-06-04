@@ -148,6 +148,33 @@ public class TestMybatis2 {
         }
     }
 
+    @Test
+    public void test6() {
+        //inputstream
+        try {
+            InputStream in = Resources.getResourceAsStream("mybatis-config.xml");
+
+            //create sqlSessionFactory
+            SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(in);
+
+            //get sqlsession using this factory
+            SqlSession session = factory.openSession();
+
+            EmpMapper empMapper = session.getMapper(EmpMapper.class);
+
+            List<Emp> emps = empMapper.selectEmpByCondition("empno",7369);
+
+            for(Emp e :emps)
+            {
+                System.out.println(e.getEmpno()+"\t"+e.getEname());
+            }
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
 
