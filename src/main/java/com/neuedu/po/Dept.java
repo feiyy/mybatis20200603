@@ -1,10 +1,21 @@
 package com.neuedu.po;
 
+import java.util.List;
+
 public class Dept {
 
     private int deptno;
     private String dname;
     private String loc;
+    private List<Emp> emps;
+
+    public List<Emp> getEmps() {
+        return emps;
+    }
+
+    public void setEmps(List<Emp> emps) {
+        this.emps = emps;
+    }
 
     public int getDeptno() {
         return deptno;

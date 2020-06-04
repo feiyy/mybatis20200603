@@ -1,5 +1,7 @@
+import com.neuedu.mapper.DeptMapper;
 import com.neuedu.mapper.EmpMapper;
 import com.neuedu.mapper.SalgradeMapper;
+import com.neuedu.po.Dept;
 import com.neuedu.po.Emp;
 import com.neuedu.po.Salgrade;
 import org.apache.ibatis.session.SqlSession;
@@ -52,6 +54,29 @@ public class TestMybatis3 {
 
         list.forEach(e -> {
             System.out.println(e.getEmpno()+"\t"+e.getEname()+"\t"+e.getDept().getDeptno()+"\t"+e.getDept().getDname());
+        });
+
+    }
+
+    @Test
+    public void test4()
+    {
+        SqlSession session =  DBUtil.getSqlSession();
+
+        DeptMapper deptMapper = session.getMapper(DeptMapper.class);
+
+        List<Dept> list = deptMapper.getDeptWithEmp();
+
+        list.forEach(d -> {
+            System.out.println(d.getDeptno()+"\t"+d.getDname());
+
+            List<Emp> emps = d.getEmps();
+
+            emps.forEach(emp -> {
+                System.out.println(emp.getEmpno()+"\t"+emp.getEname());
+            });
+
+            System.out.println("============================");
         });
 
     }
