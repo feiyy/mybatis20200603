@@ -1,9 +1,8 @@
 import com.neuedu.mapper.DeptMapper;
 import com.neuedu.mapper.EmpMapper;
 import com.neuedu.mapper.SalgradeMapper;
-import com.neuedu.po.Dept;
-import com.neuedu.po.Emp;
-import com.neuedu.po.Salgrade;
+import com.neuedu.mapper.ScoreMapper;
+import com.neuedu.po.*;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
@@ -98,6 +97,34 @@ public class TestMybatis3 {
             System.out.println(d.getDname());
 
         });
+
+    }
+
+    @Test
+    public void test6()
+    {
+        SqlSession session =  DBUtil.getSqlSession();
+
+        ScoreMapper scoreMapper = session.getMapper(ScoreMapper.class);
+        Student student = scoreMapper.getStudentScores(1);
+
+        student.getScores().forEach(score -> {
+            System.out.println(score.getCourse().getCname()+"\t" + score.getScore());
+        });
+
+    }
+
+    @Test
+    public void test7()
+    {
+        SqlSession session =  DBUtil.getSqlSession();
+
+        ScoreMapper scoreMapper = session.getMapper(ScoreMapper.class);
+        Course course = scoreMapper.getCourseScores(100);
+
+       course.getScores().forEach(score -> {
+           System.out.println(score.getStudent().getSname()+"\t"+score.getScore());
+       });
 
     }
 

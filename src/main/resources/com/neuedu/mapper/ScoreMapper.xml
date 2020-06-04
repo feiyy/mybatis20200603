@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.mapper.ScoreMapper">
+
+   <select id="getStudentScores" resultMap="_studentscore">
+       select *
+    from student s, course c, score sc
+    where s.sid = sc.sid
+    and c.cid = sc.cid
+    and s.sid = #{sid}
+   </select>
+
+    <resultMap id="_studentscore" type="Student" autoMapping="true">
+        <id column="sid" property="sid"></id>
+        <collection property="scores" ofType="Score" column="sid" autoMapping="true">
+           <!-- <id column="id" property="id"></id>-->
+            <association property="course" javaType="Course" autoMapping="true">
+            </association>
+        </collection>
+    </resultMap>
+
+    <select id="getCourseScores" resultMap="_coursescore">
+         select *
+    from student s, course c, score sc
+    where s.sid = sc.sid
+    and c.cid = sc.cid
+    and c.cid = #{cid}
+    order by sc.score
+    </select>
+
+    <resultMap id="_coursescore" type="Course" autoMapping="true">
+        <id column="cid" property="cid"></id>
+        <collection property="scores" ofType="Score" column="cid" autoMapping="true">
+            <association property="student" javaType="Student" autoMapping="true">
+            </association>
+        </collection>
+    </resultMap>
+
+
+
+</mapper>
