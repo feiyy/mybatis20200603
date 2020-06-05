@@ -77,4 +77,19 @@
         select * from dept where deptno = #{deptno}
     </select>
 
+    <select id="getEmpDynamic" resultType="Emp">
+        select * from emp
+        <where>
+            <if test="empno != 0">
+                 empno = #{empno}
+            </if>
+            <if test="ename!=null and ename!=''">
+                 and ename like #{ename}
+            </if>
+            <if test="hiredate!=null">
+                 and hiredate = #{hiredate}
+            </if>
+        </where>
+    </select>
+
 </mapper>

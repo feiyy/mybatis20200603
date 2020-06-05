@@ -32,4 +32,8 @@ public interface EmpMapper {
     public List<Emp> getEmpWithDept2();
 
     public List<Emp> getEmpWidthDeptLazy();
+
+    public List<Emp> getEmpDynamic(Emp condition);
+
+
 }
