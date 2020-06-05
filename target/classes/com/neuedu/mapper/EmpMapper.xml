@@ -108,4 +108,20 @@
         where empno = #{empno}
     </update>
 
+    <select id="getEmpByIds" resultType="Emp">
+        select * from emp
+        where empno in 
+        <foreach collection="array" open="(" close=")" separator="," item="item">
+        #{item}
+        </foreach>
+    </select>
+
+    <select id="getEmpByIds2" resultType="Emp">
+        select * from emp
+        where empno in
+        <foreach collection="list" open="(" close=")" separator="," item="item">
+            #{item}
+        </foreach>
+    </select>
+
 </mapper>

@@ -3,7 +3,9 @@ import com.neuedu.po.Emp;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
+import javax.swing.*;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TestMybatis4 {
@@ -38,5 +40,43 @@ public class TestMybatis4 {
         empMapper.updateEmpDynamic(e);
 
         session.commit();
+    }
+
+    @Test
+    public void test3()
+    {
+        SqlSession session =  DBUtil.getSqlSession();
+        EmpMapper empMapper = session.getMapper(EmpMapper.class);
+
+        int[] empnos = new int[5];
+        empnos[0] = 7369;
+        empnos[1] = 7499;
+        empnos[2] = 7521;
+        empnos[3] = 7566;
+        empnos[4] = 7654;
+
+        List<Emp> list = empMapper.getEmpByIds(empnos);
+        list.forEach(emp -> {
+            System.out.println(emp.getEname());
+        });
+
+    }
+
+    @Test
+    public void test4()
+    {
+        SqlSession session =  DBUtil.getSqlSession();
+        EmpMapper empMapper = session.getMapper(EmpMapper.class);
+
+        List<Integer> empnos = new ArrayList<>();
+        empnos.add(7369);
+        empnos.add(7499);
+        empnos.add(7521);
+
+        List<Emp> list = empMapper.getEmpByIds2(empnos);
+        list.forEach(emp -> {
+            System.out.println(emp.getEname());
+        });
+
     }
 }

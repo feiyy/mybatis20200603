@@ -37,5 +37,9 @@ public interface EmpMapper {
 
     public void updateEmpDynamic(Emp e);
 
+    public List<Emp> getEmpByIds(int[] empnos);
+
+    public List<Emp> getEmpByIds2(List<Integer> empnos);
+
 
 }
