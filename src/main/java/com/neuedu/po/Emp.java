@@ -1,11 +1,12 @@
 package com.neuedu.po;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 /*
 * relation between emp and dept is "many to one"
 * */
-public class Emp {
+public class Emp implements Serializable {
 
       private int empno;
       private String ename;
