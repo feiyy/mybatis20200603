@@ -2,10 +2,19 @@ package com.neuedu.po;
 
 public class City {
 
+    private int pid;
     private String cityName;
     private int confirmedCount;
     private int curedCount;
     private int deadCount;
+
+    public int getPid() {
+        return pid;
+    }
+
+    public void setPid(int pid) {
+        this.pid = pid;
+    }
 
     public String getCityName() {
         return cityName;

@@ -4,11 +4,20 @@ import java.util.List;
 
 public class Province {
 
+    private int pid;
     String provinceShortName;
     int confirmedCount;
     int curedCount;
     int deadCount;
     List<City> cities;
+
+    public int getPid() {
+        return pid;
+    }
+
+    public void setPid(int pid) {
+        this.pid = pid;
+    }
 
     public String getProvinceShortName() {
         return provinceShortName;

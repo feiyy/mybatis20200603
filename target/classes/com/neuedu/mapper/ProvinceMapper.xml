@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.mapper.ProvinceMapper">
+
+   <insert id="addProvince">
+       insert into province values (null,#{provinceShortName},#{confirmedCount},#{deadCount},#{curedCount},curdate())
+       <selectKey resultType="int" order="AFTER" keyProperty="pid">
+           select last_insert_id()
+       </selectKey>
+   </insert>
+
+    <insert id="addCity">
+        insert into city values
+        <foreach collection="list" item="item" separator=",">
+          (null, #{item.pid},#{item.cityName},#{item.confirmedCount},#{item.deadCount},#{item.curedCount})
+        </foreach>
+    </insert>
+
+</mapper>
