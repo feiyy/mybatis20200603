@@ -92,4 +92,20 @@
         </where>
     </select>
 
+    <update id="updateEmpDynamic">
+        update emp
+        <set>
+            <if test="ename!=null and ename!=''">
+                ename = #{ename},
+            </if>
+            <if test="hiredate!=null">
+                hiredate = #{hiredate},
+            </if>
+            <if test="sal!=0">
+                sal = #{sal},
+            </if>
+        </set>
+        where empno = #{empno}
+    </update>
+
 </mapper>

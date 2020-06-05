@@ -35,5 +35,7 @@ public interface EmpMapper {
 
     public List<Emp> getEmpDynamic(Emp condition);
 
+    public void updateEmpDynamic(Emp e);
+
 
 }

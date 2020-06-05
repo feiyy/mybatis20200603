@@ -84,12 +84,28 @@
                  empno = #{empno}
             </if>
             <if test="ename!=null and ename!=''">
-                ename like #{ename}
+                 and ename like #{ename}
             </if>
             <if test="hiredate!=null">
-                hiredate = #{hiredate}
+                 and hiredate = #{hiredate}
             </if>
         </where>
     </select>
+
+    <update id="updateEmpDynamic">
+        update emp
+        <set>
+            <if test="ename!=null and ename!=''">
+                ename = #{ename},
+            </if>
+            <if test="hiredate!=null">
+                hiredate = #{hiredate},
+            </if>
+            <if test="sal!=0">
+                sal = #{sal},
+            </if>
+        </set>
+        where empno = #{empno}
+    </update>
 
 </mapper>
