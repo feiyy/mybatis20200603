@@ -41,5 +41,8 @@ public interface EmpMapper {
 
     public List<Emp> getEmpByIds2(List<Integer> empnos);
 
+    //empno in (), hiredate bwteen ? and ? => in a hashmap
+    public List<Emp> getEmpByIds3(HashMap<String, Object> map);
+
 
 }

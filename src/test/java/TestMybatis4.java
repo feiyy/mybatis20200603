@@ -6,6 +6,7 @@ import org.junit.Test;
 import javax.swing.*;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class TestMybatis4 {
@@ -74,6 +75,29 @@ public class TestMybatis4 {
         empnos.add(7521);
 
         List<Emp> list = empMapper.getEmpByIds2(empnos);
+        list.forEach(emp -> {
+            System.out.println(emp.getEname());
+        });
+
+    }
+
+    @Test
+    public void test5()
+    {
+        SqlSession session =  DBUtil.getSqlSession();
+        EmpMapper empMapper = session.getMapper(EmpMapper.class);
+
+        List<Integer> empnos = new ArrayList<>();
+        empnos.add(7369);
+        empnos.add(7499);
+        empnos.add(7521);
+
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("empnos",empnos);
+        map.put("startdate",Date.valueOf("1981-1-1"));
+        map.put("enddate",Date.valueOf("1981-12-31"));
+
+        List<Emp> list = empMapper.getEmpByIds3(map);
         list.forEach(emp -> {
             System.out.println(emp.getEname());
         });
